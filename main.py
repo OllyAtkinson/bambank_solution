@@ -24,15 +24,17 @@ class Bank:
 
     def deposit(deposit_amount, account_number, bank_dict, trans_list):
         #print (deposit_amount)
-        (bank_dict[account_number][0]) = ((bank_dict[account_number][0])  + deposit_amount)
-        trans_list.append("You have deposited " + str(deposit_amount) + " Bambeuros. Your new balance is: " + str(bank_dict[account_number][0]) + " Bambeuros.")
+        if deposit_amount > 0:
+            (bank_dict[account_number][0]) = ((bank_dict[account_number][0])  + deposit_amount)
+            trans_list.append("You have deposited " + str(deposit_amount) + " Bambeuros. Your new balance is: " + str(bank_dict[account_number][0]) + " Bambeuros.")
+        else:
+            print ("Please deposit a value greater than 0 Bambeuros.")
         return bank_dict, trans_list
 
 
     def transfer(account_number, bank_dict, transfer_amount, transfer_contact, trans_list):
-
         transfer_contact = str(transfer_contact)
-        if (bank_dict[account_number][0]) > transfer_amount:
+        if (bank_dict[account_number][0]) >= transfer_amount and transfer_amount > 0:
             if transfer_contact in bank_dict:
                 (bank_dict[account_number][0]) = ((bank_dict[account_number][0])  - transfer_amount)
                 (bank_dict[transfer_contact][0]) = ((bank_dict[transfer_contact][0]) + transfer_amount)
@@ -121,7 +123,7 @@ def main():
                             """)
         if user_choice == "B":
             bank_balance = Bank.check_balance(account_number, bank_dict)
-            print(bank_balance)
+            print(str(bank_balance) + " Bambeuros.")
         elif user_choice == "S":
             transfer_contact = int(input("What is the account ID to transfer to?: ")) 
             transfer_amount = int(input("How much do you want to transfer?: "))
