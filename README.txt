@@ -15,6 +15,10 @@ Assumptions:
 -Transfer amount must be greater than 0
 -Negative 'deposit' not allowed
 
-
+Edge Cases Considered:
+-User transferring a value <= 0
+-User depositing a value <= 0
+-User transferring more than their account balance
+-User inputing account ID that does not exist in Bambank dict
 
 
