@@ -38,7 +38,7 @@ class Bank:
             if transfer_contact in bank_dict:
                 (bank_dict[account_number][0]) = ((bank_dict[account_number][0])  - transfer_amount)
                 (bank_dict[transfer_contact][0]) = ((bank_dict[transfer_contact][0]) + transfer_amount)
-                print("Transfer successful and balance updated")
+                print("Transfer successful and balance updated.")
                 trans_list.append(str(transfer_contact) + " has been sent " + str(transfer_amount) + " Bambeuros. Your new balance is: " + str(bank_dict[account_number][0]) + " Bambeuros.")
             else:
                 print("Account number does not exist")
